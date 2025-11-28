@@ -1,5 +1,5 @@
 import express from "express";
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/carnaval-group";
 const app = express();
 const port = 3000;
 
@@ -13,7 +13,7 @@ app.listen(port, () => {
 app.use(express.static("public"));
 
 app.get("/api/carnaval-groups", async (req, res) => {
-	const contents = await readFile("comments.json", { encoding: "utf8" });
+	const contents = await readFile("carnaval-group.json", { encoding: "utf8" });
 	const data = JSON.parse(contents);
 	res.json(data);
 });
@@ -21,7 +21,7 @@ app.get("/api/carnaval-goups", async (req, res) => {
 	//To get individually each id of the comments
 	let id = req.query.id;
 	//Read the comments file
-	const contents = await readFile("comments.json", { encoding: "utf8" });
+	const contents = await readFile("carnaval-group.json", { encoding: "utf8" });
 	const data = JSON.parse(contents);
 	//get one bg
 	let coms = data[id]; //vb. data.120677
