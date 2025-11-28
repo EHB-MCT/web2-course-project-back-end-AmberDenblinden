@@ -1,0 +1,25 @@
+[
+	{
+		"name": "De Vrie Kadeikes",
+		"founded": 1992,
+		"members": [],
+		"highlights": [
+			{ "year": 2013, "nameHighlights": "Prinsenpaar" },
+			{
+				"year": 2025,
+				"nameHighlights": "Catergorie B 1ste plaats met de prijs beste char."
+			}
+		],
+		"themes": [],
+		"events": []
+	},
+
+	{
+		"name": "De miniaturkes",
+		"founded": 2007,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": []
+	}
+]
