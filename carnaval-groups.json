@@ -49,9 +49,12 @@
     "events": []
   },
   {
-    "name": "De Leste Kannekes",
+    "name": "De Leste Kannekes (updated)",
     "founded": 2006,
-    "members": [],
+    "members": [
+      "Jan",
+      "Piet"
+    ],
     "highlights": [],
     "themes": [],
     "events": []

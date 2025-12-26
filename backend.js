@@ -4,11 +4,7 @@ import { readFile, writeFile } from "node:fs/promises";
 const app = express();
 const port = 3000;
 
-app.use(express.json()); //alle data van en naar de api is uniek
-
-app.listen(port, () => {
-	console.log(`Example app listening on port ${port}`);
-});
+app.use(express.json()); //all data from and to the API is unique
 
 app.use(express.static("public"));
 
@@ -59,25 +55,49 @@ app.get("/api/carnaval-groups/:id", async (req, res) => {
 
 // Post new carnaval group 
 app.post("/api/carnaval-groups", async (req, res) => {
-	const newGroup = req.body;
-	console.log(newGroup);
+	try {
+		const newGroup = req.body;
 
-	if (!newGroup.name || !newGroup.founded) {
-		return res.status(400).json({ message: "Missing required fields" });
+		if (!newGroup.name || !newGroup.founded) {
+			return res.status(400).json({ message: "Missing required fields" });
+		}
+
+		const contents = await readFile("carnaval-groups.json", "utf8");
+		const data = JSON.parse(contents);
+
+		data.push(newGroup);
+
+		await writeFile(
+			"carnaval-groups.json",
+			JSON.stringify(data, null, 2)
+		);
+
+		res.status(201).json({ message: "Group added", data: newGroup });
+	} catch (error) {
+		res.status(500).json({ message: "Error adding group" });
 	}
+});
 
-	const contents = await readFile("carnaval-groups.json", "utf8");
-	const data = JSON.parse(contents);
+// Put updates an existing carnaval group
+app.put("/api/carnaval-groups/:id", async (req, res) =>{
+	try {
+		const id = Number(req.params.id);
+		const updatedGroup = req.body;
 
-	data.push(newGroup);
+		const contents = await readFile("carnaval-groups.json", "utf8");
+		const data = JSON.parse(contents);
 
-	await writeFile(
-		"carnaval-groups.json",
-		JSON.stringify(data, null, 2)
-	);
+		if (!data[id]) {
+			return res.status(404).json({ message: "Group not found" });
+		}
 
-	// 201 (Created)
-	res.status(201).json({ message: "Group added", data: newGroup });
+		data[id] = updatedGroup;
+
+		await writeFile("carnaval-groups.json", JSON.stringify(data, null, 2));
+		res.json({ message: "Group updated", data: updatedGroup });
+	} catch (error) {
+		res.status(500).json({ message: "Error updating group" });
+	}
 });
 
 app.listen(port, () => {
