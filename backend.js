@@ -21,9 +21,9 @@ app.get("/api/carnaval-groups", async (req, res) => {
 		res.json(data);
 	} catch (error) {
 		//500 (Internal Server Error)
-		res.status(500).json({ 
+		res.status(500).json({
 			success: false,
-			message: "Could not read carnaval groups"
+			message: "Could not read carnaval groups",
 		});
 	}
 });
@@ -36,11 +36,11 @@ app.get("/api/carnaval-groups/:id", async (req, res) => {
 		const data = JSON.parse(contents);
 
 		//Checks if a group exists
-		if (!data[id]) { 
+		if (!data[id]) {
 			// 404 (Not Found)
-			return res.status(404).json({ 
+			return res.status(404).json({
 				success: false,
-				message: "Group not found"
+				message: "Group not found",
 			});
 		}
 
@@ -48,12 +48,12 @@ app.get("/api/carnaval-groups/:id", async (req, res) => {
 	} catch (error) {
 		res.status(500).json({
 			success: false,
-			message: "Error fetching group"
+			message: "Error fetching group",
 		});
 	}
 });
 
-// Post new carnaval group 
+// Post new carnaval group
 app.post("/api/carnaval-groups", async (req, res) => {
 	try {
 		const newGroup = req.body;
@@ -67,10 +67,7 @@ app.post("/api/carnaval-groups", async (req, res) => {
 
 		data.push(newGroup);
 
-		await writeFile(
-			"carnaval-groups.json",
-			JSON.stringify(data, null, 2)
-		);
+		await writeFile("carnaval-groups.json", JSON.stringify(data, null, 2));
 
 		res.status(201).json({ message: "Group added", data: newGroup });
 	} catch (error) {
@@ -79,7 +76,7 @@ app.post("/api/carnaval-groups", async (req, res) => {
 });
 
 // Put updates an existing carnaval group
-app.put("/api/carnaval-groups/:id", async (req, res) =>{
+app.put("/api/carnaval-groups/:id", async (req, res) => {
 	try {
 		const id = Number(req.params.id);
 		const updatedGroup = req.body;
@@ -97,6 +94,28 @@ app.put("/api/carnaval-groups/:id", async (req, res) =>{
 		res.json({ message: "Group updated", data: updatedGroup });
 	} catch (error) {
 		res.status(500).json({ message: "Error updating group" });
+	}
+});
+
+// Delete a carnaval group
+app.delete("/api/carnaval-groups/:id", async (req, res) => {
+	try {
+		const id = Number(req.params.id);
+
+		const contents = await readFile("carnaval-groups.json", "utf8");
+		const data = JSON.parse(contents);
+
+		if (!data[id]) {
+			return res.status(404).json({ message: "Group not found" });
+		}
+
+		const deletedGroup = data.splice(id, 1);
+
+		await writeFile("carnaval-groups.json", JSON.stringify(data, null, 2));
+
+		res.json({ message: "Group deleted", data: deletedGroup });
+	} catch (error) {
+		res.status(500).json({ message: "Error deleting group" });
 	}
 });
 
