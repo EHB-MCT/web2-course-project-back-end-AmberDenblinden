@@ -1,5 +1,5 @@
 import express from "express";
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 
 const app = express();
 const port = 3000;
@@ -58,15 +58,26 @@ app.get("/api/carnaval-groups/:id", async (req, res) => {
 });
 
 // Post new carnaval group 
-app.post("/api/carnaval-groups", (req, res) => {
+app.post("/api/carnaval-groups", async (req, res) => {
 	const newGroup = req.body;
 	console.log(newGroup);
 
-	res.json({
-		success: true,
-		message: "Group received",
-		data: newGroup
-	});
+	if (!newGroup.name || !newGroup.founded) {
+		return res.status(400).json({ message: "Missing required fields" });
+	}
+
+	const contents = await readFile("carnaval-groups.json", "utf8");
+	const data = JSON.parse(contents);
+
+	data.push(newGroup);
+
+	await writeFile(
+		"carnaval-groups.json",
+		JSON.stringify(data, null, 2)
+	);
+
+	// 201 (Created)
+	res.status(201).json({ message: "Group added", data: newGroup });
 });
 
 app.listen(port, () => {
