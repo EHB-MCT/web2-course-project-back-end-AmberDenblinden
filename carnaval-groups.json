@@ -1,174 +1,227 @@
 [
-  {
-    "name": "De Vrie Kadeikes",
-    "founded": 1992,
-    "members": [],
-    "highlights": [
-      {
-        "year": 2013,
-        "nameHighlights": "Prinsenpaar"
-      },
-      {
-        "year": 2025,
-        "nameHighlights": "Catergorie B 1ste plaats met de prijs beste char."
-      }
-    ],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "D'Afzakkers",
-    "founded": 1996,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "T Droit Veerkant",
-    "founded": 2023,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "De Froesjeleirs",
-    "founded": 1974,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "De Hallemettekes",
-    "founded": 2003,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "De Leste Kannekes (updated)",
-    "founded": 2006,
-    "members": [
-      "Jan",
-      "Piet"
-    ],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "De miniaturkes",
-    "founded": 2007,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "De Roeftoerjkes",
-    "founded": 2007,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "Dei Van Ouver 't Woeter",
-    "founded": 2012,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "E Vat Vol Nuizekes",
-    "founded": 2020,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "Schief Bezjoebert",
-    "founded": 2020,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "Van Uure Zegge",
-    "founded": 2014,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "De Boerkes",
-    "founded": 2000,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "De Fleerefluiters",
-    "founded": 2003,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "De Gebeure",
-    "founded": 1976,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "De Ketjes",
-    "founded": 2011,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "De Mannen van de Met",
-    "founded": 1988,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "De Smosjterpotten",
-    "founded": 2000,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "Dei van ba Chic",
-    "founded": 1992,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  },
-  {
-    "name": "De Pertotallekes",
-    "founded": 2015,
-    "members": [],
-    "highlights": [],
-    "themes": [],
-    "events": []
-  }
+	{
+		"groupId": "DVK1992",
+		"name": "De Vrie Kadeikes",
+		"founded": 1992,
+		"members": ["Dirk", "Karlien"],
+		"highlights": [
+			{
+				"year": 2013,
+				"nameHighlights": "Prinsenpaar"
+			},
+			{
+				"year": 2025,
+				"nameHighlights": "Catergorie B 1ste plaats met de prijs beste char."
+			}
+		],
+		"themes": [
+			{ "year": 2025, "theme": "De boeken toe!" },
+			{ "year": 2024, "theme": "Kermis" }
+		],
+		"events": [
+			{
+				"id": "EV001",
+				"nameEvent": "De Vrieje Quiz",
+				"date": "2025-09-12",
+				"description": "Een Quiz voor iedereen."
+			},
+			{
+				"id": "EV002",
+				"nameEvent": "Boterhammenfestijn",
+				"date": "2025-10-25",
+				"description": "Boterhammen, croques en pannenkoeken voor jong en oud."
+			}
+		],
+		"image": "de_vrie_kadeikes.jpg"
+	},
+	{
+		"groupId": "DAF1996",
+		"name": "D'Afzakkers",
+		"founded": 1996,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "dafzakkers.jpg"
+	},
+	{
+		"groupId": "TDV2023",
+		"name": "T Droit Veerkant",
+		"founded": 2023,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "tdroit_veerkant.jpg"
+	},
+	{
+		"groupId": "DFR1974",
+		"name": "De Froesjeleirs",
+		"founded": 1974,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "defroesjeleirs.jpg"
+	},
+	{
+		"groupId": "DH2003",
+		"name": "De Hallemettekes",
+		"founded": 2003,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "de_hallemettekes.jpg"
+	},
+	{
+		"groupId": "DLK2006",
+		"name": "De Leste Kannekes (updated)",
+		"founded": 2006,
+		"members": ["Jan", "Piet"],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "deleste_kannekes.jpg"
+	},
+	{
+		"groupId": "DM2007",
+		"name": "De miniaturkes",
+		"founded": 2007,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "deminiaturkes.jpg"
+	},
+	{
+		"groupId": "DR2007",
+		"name": "De Roeftoerjkes",
+		"founded": 2007,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "deroeftoerjkes.jpg"
+	},
+	{
+		"groupId": "DVW2012",
+		"name": "Dei Van Ouver 't Woeter",
+		"founded": 2012,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "deivouvertwoeter.jpg"
+	},
+	{
+		"groupId": "EVN2020",
+		"name": "E Vat Vol Nuizekes",
+		"founded": 2020,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "evatvolnuizekes.jpg"
+	},
+	{
+		"groupId": "SB2020",
+		"name": "Schief Bezjoebert",
+		"founded": 2020,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "schiefbezjoebert.jpg"
+	},
+	{
+		"groupId": "VUZ2014",
+		"name": "Van Uure Zegge",
+		"founded": 2014,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "vanuurezegge.jpg"
+	},
+	{
+		"groupId": "DB2000",
+		"name": "De Boerkes",
+		"founded": 2000,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "deboerkes.jpg"
+	},
+	{
+		"groupId": "DF2003",
+		"name": "De Fleerefluiters",
+		"founded": 2003,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "defleerefluiters.jpg"
+	},
+	{
+		"groupId": "DG1976",
+		"name": "De Gebeure",
+		"founded": 1976,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "degebeure.jpg"
+	},
+	{
+		"groupId": "DK2011",
+		"name": "De Ketjes",
+		"founded": 2011,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "deketjes.jpg"
+	},
+	{
+		"groupId": "DMM1988",
+		"name": "De Mannen van de Met",
+		"founded": 1988,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "demannenvandemet.jpg"
+	},
+	{
+		"groupId": "DS2000",
+		"name": "De Smosjterpotten",
+		"founded": 2000,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "desmosjterpotten.jpg"
+	},
+	{
+		"groupId": "DVBC1992",
+		"name": "Dei van ba Chic",
+		"founded": 1992,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "deivancbachic.jpg"
+	},
+	{
+		"groupId": "DP2015",
+		"name": "De Pertotallekes",
+		"founded": 2015,
+		"members": [],
+		"highlights": [],
+		"themes": [],
+		"events": [],
+		"image": "depertotallekes.jpg"
+	}
 ]
