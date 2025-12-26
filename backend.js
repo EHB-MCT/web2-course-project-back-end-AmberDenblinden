@@ -1,9 +1,9 @@
 import express from "express";
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
+
 const app = express();
 const port = 3000;
 
-app.use(express.static("public"));
 app.use(express.json()); //alle data van en naar de api is uniek
 
 app.listen(port, () => {
@@ -12,27 +12,63 @@ app.listen(port, () => {
 
 app.use(express.static("public"));
 
-
-app.get("/api/carnaval-groups", async (req, res) => {
-	const contents = await readFile("carnaval-group.json", { encoding: "utf8" });
-	const data = JSON.parse(contents);
-	res.json(data);
+// Test - confirming the API is operational
+app.get("/", (req, res) => {
+	res.send("Carnaval Halle API is running");
 });
 
+// Get all carnaval groups
 app.get("/api/carnaval-groups", async (req, res) => {
-	//To get individually each id of the comments
-	let id = req.query.id;
-	//Read the comments file
-	const contents = await readFile("carnaval-group.json", { encoding: "utf8" });
-	const data = JSON.parse(contents);
-	//get one bg
-	let coms = data[id]; //vb. data.120677
-	res.json(coms);
+	try {
+		const contents = await readFile("carnaval-groups.json", "utf8");
+		const data = JSON.parse(contents);
+		res.json(data);
+	} catch (error) {
+		//500 (Internal Server Error)
+		res.status(500).json({ 
+			success: false,
+			message: "Could not read carnaval groups"
+		});
+	}
 });
 
-app.post("/api/carnaval-groups", async (req, res) => {
-	//Request the body so you can post a new comment via a body
-	let data = req.body;
-	console.log(data);
-	res.send("succces");
+// Get one carnaval group
+app.get("/api/carnaval-groups/:id", async (req, res) => {
+	try {
+		const id = Number(req.params.id);
+		const contents = await readFile("carnaval-groups.json", "utf8");
+		const data = JSON.parse(contents);
+
+		//Checks if a group exists
+		if (!data[id]) { 
+			// 404 (Not Found)
+			return res.status(404).json({ 
+				success: false,
+				message: "Group not found"
+			});
+		}
+
+		res.json(data[id]);
+	} catch (error) {
+		res.status(500).json({
+			success: false,
+			message: "Error fetching group"
+		});
+	}
+});
+
+// Post new carnaval group 
+app.post("/api/carnaval-groups", (req, res) => {
+	const newGroup = req.body;
+	console.log(newGroup);
+
+	res.json({
+		success: true,
+		message: "Group received",
+		data: newGroup
+	});
+});
+
+app.listen(port, () => {
+	console.log(`Server running on http://localhost:${port}`);
 });
