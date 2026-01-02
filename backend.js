@@ -7,7 +7,7 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const uri = process.env.MONGO_URI;
 
 // Used Connect to cluster0 - example code for
@@ -22,6 +22,10 @@ const client = new MongoClient(uri, {
 
 let db;
 
+app.use(cors());
+app.use(express.json()); //all data from and to the API is unique
+app.use(express.static("public"));
+
 async function startServer() {
 	try {
 		await client.connect();
@@ -30,7 +34,7 @@ async function startServer() {
 		console.log("Connected to MongoDB Atlas");
 
 		app.listen(port, () => {
-			console.log(`Server running on http://localhost:${port}`);
+			console.log(`Server running on port ${port}`);
 		});
 	} catch (error) {
 		console.error("MongoDB connection failed:", error);
@@ -38,10 +42,6 @@ async function startServer() {
 }
 
 startServer();
-
-app.use(cors());
-app.use(express.json()); //all data from and to the API is unique
-app.use(express.static("public"));
 
 // Test - confirming the API is operational
 app.get("/", (req, res) => {
